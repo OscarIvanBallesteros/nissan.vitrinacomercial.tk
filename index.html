@@ -970,11 +970,11 @@
           </div>
           <div class="form">
             <form method="post" action="contacto.php">
-              <div class="eight column">
+              <div class="eight columns">
                 <label>Nombre *</label>
                 <input type="text" name="name" class="text" />
                 <label>Email *</label>
-                <input type="text" name="email" class="text" />
+                <input type="email" name="email" class="text" />
                 <label>Teléfono</label>
                 <input type="text" name="phone" class="text" />
               </div>
@@ -1187,7 +1187,10 @@
       });
     </script>
 
-    <!-- Included JS Files Ends
+    <!-- Included PHP Files Ends
             ================================================== -->
+    <?php 
+            include("contacto.php")
+      ?>
   </body>
 </html>
