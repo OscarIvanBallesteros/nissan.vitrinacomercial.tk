@@ -969,7 +969,7 @@
             </div>
           </div>
           <div class="form">
-            <form method="post" action="contacto.php">
+            <form class="formcont" method="POST" action="contacto.php">
               <div class="eight columns">
                 <label>Nombre *</label>
                 <input type="text" name="name" class="text" />
@@ -984,6 +984,10 @@
               </div>
               <div class="sixteen columns center">
                 <input type="submit" id="boton" value="ENVIAR" />
+              </div>
+              <div id="alerta" class="alert hide">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">& times;</button>
+                <strong class="respuesta"></strong><span class="mensalert"></span>
               </div>
             </form>
           </div>
@@ -1192,5 +1196,7 @@
     <?php 
             include("contacto.php")
       ?>
+
+    <script src="js/form.js"></script>
   </body>
 </html>

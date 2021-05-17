@@ -1,34 +1,24 @@
 <?php
+$name = $_POST['name'];
+$mail = $_POST['mail'];
+$phone = $_POST['phone'];
+$message = $_POST['comment'];
 
-function validar_campo($campo) {
-    $campo = trim($campo);
-    $campo = stripcslashes($campo);
-    $campo = htmlspecialchars($campo);
+$header = 'From: ' . $mail . " \r\n";
+$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
+$header .= "Mime-Version: 1.0 \r\n";
+$header .= "Content-Type: text/plain";
 
-    return $campo;
-}
+$message = "Este mensaje fue enviado por: " . $name . " \r\n";
+$message .= "Su e-mail es: " . $mail . " \r\n";
+$message .= "Teléfono de contacto: " . $phone . " \r\n";
+$message .= "Mensaje: " . $_POST['comment'] . " \r\n";
+$message .= "Enviado el: " . date('d/m/Y', time());
 
-    if (isset($_POST['name']) && !empty($_POST['name']) &&
-        isset($_POST['email']) && !empty($_POST['email']) &&
-        isset($_POST['phone']) && !empty($_POST['phone']) &&
-        isset($_POST['comment']) && !empty($_POST['comment'])) {
+$para = 'webmaster@vitrinacomercial.tk';
+$asunto = 'Mensaje de NISSAN';
 
-        $destinoMail = "webmaster@vitrinacomercial.tk";
+mail($para, $asunto, utf8_decode($comment), $header);
 
-
-        $name = validar_campo($_POST["name"]);
-        $email = validar_campo($_POST["email"]);
-        $phone = validar_campo($_POST["phone"]);
-        $comment = validar_campo($_POST["comment"]);
-
-        $contenido = "Nombre: " .$name. "\n Email: " .$email. "\n Teléfono: " .$phone. "\n Mensaje: " .$comment;
-
-        mail($destinoMail, "Mensaje de contacto del cliente" . $name, $contenido);
-
-            return print("Ok se envió");
-        }
-    
-        return print("No se puede enviar");
-
-
-
+header("Location:index.html");
+?>
